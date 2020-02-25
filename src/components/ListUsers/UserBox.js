@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import payme from "../static/payme.svg";
+import payme from "../../static/payme.svg";
 import { PopUp } from "./PopUp";
 import { useHistory } from "react-router";
 
@@ -22,7 +22,7 @@ export const UserBox = props => {
       <div key={id} className="box__user--wrapper">
         <UserClient user={props.user} />
         <div className="box__user-pay-wrapper">
-          <img src={payme} />
+          <img src={payme} onClick={openTab} />
           <span className="box__user-pay-wrapper--payme" onClick={openTab}>
             Pagar
           </span>

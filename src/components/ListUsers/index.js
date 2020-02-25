@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import Layout from "../Layout";
+import Layout from "../../Layout";
 import { UserBox } from "./UserBox";
 const ListUser = props => {
   const [users, setUsers] = useState(null);

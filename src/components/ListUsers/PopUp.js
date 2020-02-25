@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route, Link, Redirect } from "react-router-dom";
 import UserPay from "../UserRoutes/UserPay";
+import { UserCards } from "../UserRoutes/UserCards";
 
 export const PopUp = ({ user, statePopup, closePopup }) => {
   if (statePopup.status) {
@@ -28,6 +29,11 @@ const UserPaths = ({ user }) => {
           path="/pay"
           exact={true}
           render={props => <UserPay {...props} user={user} />}
+        />
+        <Route
+          path="/pay-card"
+          exact={true}
+          render={props => <UserCards {...props} user={user} />}
         />
       </Switch>
     </React.Fragment>
