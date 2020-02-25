@@ -1,0 +1,12 @@
+.section {
+  &--container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background: #3c3e64;
+    margin: 0 auto;
+  }
+}
+
+@import "./user-box.scss";
+@import "./window.scss";

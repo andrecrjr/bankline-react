@@ -1,0 +1,43 @@
+.box__user {
+  &--wrapper {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    &:not(:first-of-type) {
+      border-top: 2px solid white;
+    }
+    &-client {
+      display: flex;
+    }
+    &-image {
+      width: 80px;
+      border-radius: 100%;
+      border: 2px solid #ffffff;
+    }
+    &-description {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      padding-left: 16px;
+      font-size: 24px;
+      line-height: 26px;
+      color: white;
+    }
+    &-username {
+      font-size: 14px;
+      line-height: 16px;
+      &.label {
+        padding-left: 12px;
+      }
+    }
+  }
+  &-pay-wrapper {
+    display: flex;
+    align-items: center;
+    &--payme {
+      color: white;
+      text-transform: uppercase;
+      padding-left: 12px;
+    }
+  }
+}
