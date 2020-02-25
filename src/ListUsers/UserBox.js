@@ -20,18 +20,7 @@ export const UserBox = props => {
       <PopUp user={props.user} statePopup={openPopup} closePopup={openTab} />
 
       <div key={id} className="box__user--wrapper">
-        <div className="box__user--wrapper-client">
-          <img src={img} alt={username} className="box__user--wrapper-image" />
-          <div class="box__user--wrapper-description">
-            <label>{name}</label>
-            <div className="box__user--wrapper-username">
-              <label>id: {id}</label>
-              <label className="box__user--wrapper-username label">
-                {username}
-              </label>
-            </div>
-          </div>
-        </div>
+        <UserClient user={props.user} />
         <div className="box__user-pay-wrapper">
           <img src={payme} />
           <span className="box__user-pay-wrapper--payme" onClick={openTab}>
@@ -40,5 +29,25 @@ export const UserBox = props => {
         </div>
       </div>
     </>
+  );
+};
+
+export const UserClient = ({ user, inside }) => {
+  const { username, img, name, id } = user;
+  return (
+    <div className={`box__user--wrapper-client ${inside ? `user-page` : null}`}>
+      <img src={img} alt={username} className="box__user--wrapper-image" />
+      <div
+        class={`box__user--wrapper-description ${inside ? `user-page` : null}`}
+      >
+        <label>{name}</label>
+        <div className="box__user--wrapper-username">
+          <label>id: {id}</label>
+          <label className="box__user--wrapper-username label">
+            {username}
+          </label>
+        </div>
+      </div>
+    </div>
   );
 };

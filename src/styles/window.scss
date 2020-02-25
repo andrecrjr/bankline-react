@@ -12,6 +12,7 @@
     background: rgba(68, 68, 68, 0.4);
     overflow-x: hidden;
     transition: all 500ms;
+    padding-top: 100px;
   }
   &.close {
     display: none;
@@ -20,8 +21,8 @@
 
 .popover-user {
   display: flex;
-  width: 60%;
-  height: 35%;
+  width: 30%;
+  height: 50%;
   background: white;
   justify-content: stretch;
   flex-direction: column;
