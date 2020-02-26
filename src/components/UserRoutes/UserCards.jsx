@@ -2,13 +2,33 @@ import React from "react";
 
 export const UserCards = () => {
   return (
-    <form>
-      <input type="text" placeholder="Selecione a bandeira" />
-      <input type="text" placeholder="Nome escrito no cartão" />
-      <input type="text" placeholder="Numero do cartão" />
-      <input type="text" placeholder="Validade (MM/AA)" />
-      <input type="text" placeholder="Codigo de segurança" />
-      <input type="text" placeholder="CEP endereço da segurança" />
+    <form className="form__component">
+      <div class="group">
+        <select>
+          <option>Master Card</option>
+          <option value="">Visa</option>
+        </select>
+      </div>
+      <div class="group">
+        <input type="text" className="input__box" required />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Nome escrito no cartão</label>
+      </div>
+
+      <div class="group">
+        <input type="text" className="input__box" required />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Numero do cartão</label>
+      </div>
+
+      <div class="group">
+        <input type="text" className="input__box" required />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Validade (MM/AAAA)</label>
+      </div>
     </form>
   );
 };
