@@ -3,8 +3,11 @@ import payme from "../../static/payme.svg";
 import { PopUp } from "./PopUp";
 import { useHistory } from "react-router";
 
+export const ActivityClientPages = React.createContext({});
+
 export const UserBox = props => {
   const { id, username, name, img } = props.user;
+  const { user } = props;
   const [openPopup, setOpen] = React.useState({ id: id, status: false });
   const { location, ...history } = useHistory();
   const openTab = e => {
@@ -17,17 +20,20 @@ export const UserBox = props => {
 
   return (
     <>
-      <PopUp user={props.user} statePopup={openPopup} closePopup={openTab} />
-
-      <div key={id} className="box__user--wrapper">
-        <UserClient user={props.user} />
-        <div className="box__user-pay-wrapper">
-          <img src={payme} onClick={openTab} />
-          <span className="box__user-pay-wrapper--payme" onClick={openTab}>
-            Pagar
-          </span>
+      <ActivityClientPages.Provider
+        value={{ setOpen, id, user, openTab, openPopup }}
+      >
+        <PopUp />
+        <div key={id} className="box__user--wrapper">
+          <UserClient user={props.user} />
+          <div className="box__user-pay-wrapper">
+            <img src={payme} onClick={openTab} />
+            <span className="box__user-pay-wrapper--payme" onClick={openTab}>
+              Pagar
+            </span>
+          </div>
         </div>
-      </div>
+      </ActivityClientPages.Provider>
     </>
   );
 };

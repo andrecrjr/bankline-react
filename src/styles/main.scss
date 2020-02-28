@@ -8,5 +8,7 @@ body {
   font-family: Roboto, sans-serif;
 }
 
+@import "./definitions.scss";
+
 @import "./home.scss";
 @import "./form-creditcard.scss";
