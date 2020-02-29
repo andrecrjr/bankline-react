@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { ActivityClientPages } from "../ListUsers/UserBox";
+import arrowBack from "../../static/arrowBack.svg";
 
 export const ButtonPay = props => {
   const { location, ...history } = useHistory();
@@ -24,15 +25,19 @@ export const ButtonPay = props => {
   );
 };
 
-export const Back = () => {
+export const BackButton = () => {
   const { location, ...history } = useHistory();
-  const { setOpen, id } = React.useContext(ActivityClientPages);
+  const { setOpen, user } = React.useContext(ActivityClientPages);
   const close = () => {
     if (location.pathname === "/pay") {
-      setOpen({ id: id, status: false });
+      setOpen({ id: user.id, status: false });
     }
     history.goBack();
   };
 
-  return <span onClick={close}>Voltar</span>;
+  return (
+    <span onClick={close} className="page-user__back-button">
+      <img src={arrowBack} />
+    </span>
+  );
 };

@@ -1,12 +1,12 @@
-import React, { useReducer } from "react";
-import payme from "../../static/payme.svg";
-import { PopUp } from "./PopUp";
+import React from "react";
+import PopUp from "./PopUp";
 import { useHistory } from "react-router";
+import payme from "../../static/payme.svg";
 
 export const ActivityClientPages = React.createContext({});
 
 export const UserBox = props => {
-  const { id, username, name, img } = props.user;
+  const { id } = props.user;
   const { user } = props;
   const [openPopup, setOpen] = React.useState({ id: id, status: false });
   const { location, ...history } = useHistory();
@@ -21,7 +21,7 @@ export const UserBox = props => {
   return (
     <>
       <ActivityClientPages.Provider
-        value={{ setOpen, id, user, openTab, openPopup }}
+        value={{ setOpen, user, openTab, openPopup }}
       >
         <PopUp />
         <div key={id} className="box__user--wrapper">

@@ -4,18 +4,20 @@ import alert from "../../static/alert.svg";
 import { ButtonPay } from "../Buttons";
 import { Link } from "react-router-dom";
 
+const PayClientContext = React.createContext({});
 export default function UserPay({ user }) {
-  console.log(user);
   return (
-    <section className="popover-user__information">
-      <UserClient user={user} insidePage={true} />
-      <InputPrice user={user} />
-      <CreditCards />
-    </section>
+    <PayClientContext.Provider>
+      <section className="page-user__information">
+        <UserClient user={user} insidePage={true} />
+        <InputPrice user={user} />
+        <CreditCards />
+      </section>
+    </PayClientContext.Provider>
   );
 }
 
-export const InputPrice = ({ user }) => {
+export const InputPrice = () => {
   return (
     <section className="box__user--input">
       <label for="value-pay">R$</label>
