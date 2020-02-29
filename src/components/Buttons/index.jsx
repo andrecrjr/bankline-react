@@ -24,7 +24,7 @@ export const ButtonPay = props => {
   );
 };
 
-export const Back = props => {
+export const Back = () => {
   const { location, ...history } = useHistory();
   const { setOpen, id } = React.useContext(ActivityClientPages);
   const close = () => {

@@ -25,7 +25,7 @@ export const UserBox = props => {
       >
         <PopUp />
         <div key={id} className="box__user--wrapper">
-          <UserClient user={props.user} />
+          <UserClient user={props.user} insidePage={false} />
           <div className="box__user-pay-wrapper">
             <img src={payme} onClick={openTab} />
             <span className="box__user-pay-wrapper--payme" onClick={openTab}>
@@ -38,13 +38,17 @@ export const UserBox = props => {
   );
 };
 
-export const UserClient = ({ user, inside }) => {
+export const UserClient = ({ user, insidePage }) => {
   const { username, img, name, id } = user;
   return (
-    <div className={`box__user--wrapper-client ${inside ? `user-page` : null}`}>
+    <div
+      className={`box__user--wrapper-client ${insidePage ? `user-page` : null}`}
+    >
       <img src={img} alt={username} className="box__user--wrapper-image" />
       <div
-        class={`box__user--wrapper-description ${inside ? `user-page` : null}`}
+        class={`box__user--wrapper-description ${
+          insidePage ? `user-page` : null
+        }`}
       >
         <label>{name}</label>
         <div className="box__user--wrapper-username">

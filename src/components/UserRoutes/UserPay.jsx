@@ -8,7 +8,7 @@ export default function UserPay({ user }) {
   console.log(user);
   return (
     <section className="popover-user__information">
-      <UserClient user={user} inside={true} />
+      <UserClient user={user} insidePage={true} />
       <InputPrice user={user} />
       <CreditCards />
     </section>
