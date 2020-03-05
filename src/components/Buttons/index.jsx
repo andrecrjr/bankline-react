@@ -4,7 +4,7 @@ import { ActivityClientPages } from "../ListUsers/UserBox";
 import arrowBack from "../../static/arrowBack.svg";
 
 export const ButtonPay = props => {
-  const { location, ...history } = useHistory();
+  const { location } = useHistory();
 
   if (location.pathname === "/pay") {
     return (
@@ -17,11 +17,13 @@ export const ButtonPay = props => {
   }
 
   return (
-    <a href="">
-      <button class="main--pay" type="submit">
-        {props.children}
-      </button>
-    </a>
+    <button
+      class="main--pay"
+      type="submit"
+      style={{ width: props.width, margin: props.margin }}
+    >
+      {props.children}
+    </button>
   );
 };
 

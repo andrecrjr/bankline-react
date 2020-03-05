@@ -106,6 +106,7 @@
       font-size: 14px;
       color: #ef5778;
       align-self: center;
+      padding-bottom: 30px;
       a {
         color: #ef5778;
         font-weight: bold;
@@ -120,18 +121,15 @@
   }
 }
 
-a {
-  margin-top: 30px;
-  button {
-    &.main--pay {
-      width: 100%;
-      color: #474971;
-      padding: 16px;
-      border-radius: 24px;
-      background: linear-gradient(180deg, #b4f4e5 0%, #7de6c6 100%);
-      text-transform: uppercase;
-      font-weight: bold;
-      border: none;
-    }
+button {
+  &.main--pay {
+    width: 100%;
+    color: #474971;
+    padding: 16px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #b4f4e5 0%, #7de6c6 100%);
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
   }
 }

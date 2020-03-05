@@ -17,7 +17,7 @@ const ListUser = props => {
 
   useEffect(() => {
     loadUsers();
-  }, [users]);
+  }, []);
 
   return (
     <div className="section--users">

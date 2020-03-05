@@ -1,0 +1,70 @@
+.page-user {
+  &__cards {
+    &--container {
+      display: flex;
+      width: 100%;
+      height: auto;
+      justify-content: center;
+      padding-top: 24px;
+      flex-direction: column;
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        padding-bottom: 200px;
+      }
+      h1 {
+        color: white;
+        font-size: 20px;
+        line-height: 23px;
+        font-weight: normal;
+        text-align: center;
+      }
+    }
+    &--card-box {
+      width: 100%;
+      display: flex;
+      transition: background 200ms;
+      justify-content: space-between;
+      padding: 28px 33px;
+      &.on {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      &.add-more {
+        border-top: 2px solid rgba(255, 255, 255, 0.24);
+        font-size: 20px;
+        width: 315px;
+        margin: 0 auto;
+        line-height: 23px;
+        padding: 0;
+        color: white;
+        padding-top: 25px;
+        justify-content: initial;
+        .add-new {
+          padding-left: 22px;
+        }
+      }
+      &:first-child {
+        margin-top: 25px;
+      }
+      &--number {
+        padding: 2px 50px 0 2px;
+        padding-left: 20px;
+        font-size: 20px;
+        line-height: 23px;
+        color: white;
+        letter-spacing: 1px;
+      }
+
+      &--selected {
+        opacity: 0;
+        &.on {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
