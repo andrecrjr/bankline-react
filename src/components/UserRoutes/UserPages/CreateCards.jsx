@@ -2,9 +2,11 @@ import React from "react";
 import arrowSelect from "../../../static/arrowSelect.svg";
 import { ButtonPay } from "../../Buttons";
 import { PayClientContext } from "../UserContext";
+import { useSaveCard } from "../useSaveCard";
 
 export const UserCreateCard = () => {
   const { userState, dispatch } = React.useContext(PayClientContext);
+  const saveCardLocal = useSaveCard(userState.cards);
   const nameCard = useFormInput("");
   const selectBank = useFormInput("");
   const numberCard = useFormInput("");
@@ -27,13 +29,8 @@ export const UserCreateCard = () => {
   };
 
   React.useEffect(() => {
-    if (userState.cards.length >= 1) {
-      localStorage.setItem(
-        "creditcards-client",
-        JSON.stringify(userState.cards)
-      );
-    }
-  }, [userState]);
+    saveCardLocal();
+  }, [userState.cards]);
 
   return (
     <form className="form__component" onSubmit={submitUserCard}>

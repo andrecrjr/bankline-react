@@ -9,16 +9,14 @@ export const ClientReducer = (initialState, action) => {
         ...initialState,
         cards: [...initialState.cards, action.payload]
       };
-    case "ACTIVATE_CREDIT_CARD":
+    case "ACTIVATE_CARD":
       return {
         ...initialState,
-        cards: [
-          ...initialState.cards.filter(card => {
-            card.id === action.id
-              ? (card.statusSelected = true)
-              : (card.statusSelected = false);
-          })
-        ]
+        ...initialState.cards.forEach((card, index) => {
+          index === action.id
+            ? (card.statusSelected = true)
+            : (card.statusSelected = false);
+        })
       };
   }
 };

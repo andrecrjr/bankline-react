@@ -4,27 +4,48 @@ import cardIcon from "../../../static/cardIcon.svg";
 import okIcon from "../../../static/okIcon.svg";
 import crossCard from "../../../static/crossCard.svg";
 import { ButtonPay } from "../../Buttons";
-import { Link } from "react-router-dom";
+
+import { useSaveCard } from "../useSaveCard";
+import { Link, useHistory } from "react-router-dom";
 
 const UserCards = () => {
-  const { userState } = React.useContext(PayClientContext);
+  const { userState, dispatch } = React.useContext(PayClientContext);
+  const history = useHistory();
   const [select, setSelected] = React.useState({ status: false, id: 0 });
+  const saveCardLocal = useSaveCard(userState.cards);
 
-  const selectCard = (e, index) => {
+  const selectCard = (e, index, userSelected) => {
     e.preventDefault();
+    if (userSelected) {
+      userSelected = false;
+    }
     setSelected({ status: true, id: index });
   };
+
+  const dispatchCard = e => {
+    e.preventDefault();
+    dispatch({ type: "ACTIVATE_CARD", id: select.id });
+    history.push("/pay");
+  };
+
+  React.useEffect(() => {
+    saveCardLocal();
+  }, [userState.cards]);
+
   return (
     <section className="page-user__cards">
       <section className="page-user__cards--container">
         <h1>Cartões Cadastrados</h1>
-        <form>
+        <form onSubmit={dispatchCard}>
           <ul className="page-user__cards--list">
             {userState.cards.map((card, index) => (
-              <li onClick={e => selectCard(e, index)}>
+              <li onClick={e => selectCard(e, index, card.userSelected)}>
                 <div
                   className={`page-user__cards--card-box ${
-                    select.id === index && select.status ? `on` : `off`
+                    (select.id === index && select.status) ||
+                    card.statusSelected
+                      ? `on`
+                      : `off`
                   }`}
                 >
                   <img src={cardIcon} />
@@ -34,7 +55,10 @@ const UserCards = () => {
                   <img
                     src={okIcon}
                     className={`page-user__cards--card-box--selected ${
-                      select.id === index && select.status ? `on` : `off`
+                      (select.id === index && select.status) ||
+                      card.statusSelected
+                        ? `on`
+                        : `off`
                     }`}
                   />
                 </div>
