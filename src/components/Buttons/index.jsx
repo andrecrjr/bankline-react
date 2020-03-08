@@ -9,7 +9,7 @@ export const ButtonPay = props => {
   if (location.pathname === "/pay") {
     return (
       <Link to={props.link}>
-        <button class="main--pay" type="submit">
+        <button className="main--pay" type="submit">
           {props.children}
         </button>
       </Link>
@@ -18,7 +18,7 @@ export const ButtonPay = props => {
 
   return (
     <button
-      class="main--pay"
+      className="main--pay"
       type="submit"
       style={{ width: props.width, margin: props.margin }}
     >

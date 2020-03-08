@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It should mount buttons It button Pay renders 1`] = `
+<Component
+  to="/"
+>
+  <button
+    className="main--pay"
+    type="submit"
+  >
+    Pagar
+  </button>
+</Component>
+`;
+
+exports[`It should mount buttons It renders back button 1`] = `
+<span
+  className="page-user__back-button"
+  onClick={[Function]}
+>
+  <img
+    src="arrowBack.svg"
+  />
+</span>
+`;
