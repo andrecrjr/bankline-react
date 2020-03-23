@@ -1,7 +1,7 @@
 import React from "react";
 import PopUp from "./PopUp";
 import { useHistory } from "react-router";
-import payme from "../../static/payme.svg";
+import payme from "static/payme.svg";
 
 export const ActivityClientPages = React.createContext({});
 
@@ -27,7 +27,7 @@ export const UserBox = props => {
         <div key={id} className="box__user--wrapper">
           <UserClient user={props.user} insidePage={false} />
           <div className="box__user-pay-wrapper">
-            <img src={payme} onClick={openTab} />
+            <img src={payme} onClick={openTab} alt={props.user.username} />
             <span className="box__user-pay-wrapper--payme" onClick={openTab}>
               Pagar
             </span>

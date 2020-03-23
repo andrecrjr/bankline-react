@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { ActivityClientPages } from "../ListUsers/UserBox";
-import arrowBack from "../../static/arrowBack.svg";
+import arrowBack from "static/arrowBack.svg";
 
 export const ButtonPay = props => {
   const { location } = useHistory();
@@ -39,7 +39,7 @@ export const BackButton = () => {
 
   return (
     <span onClick={close} className="page-user__back-button">
-      <img src={arrowBack} />
+      <img src={arrowBack} alt="retornar" />
     </span>
   );
 };

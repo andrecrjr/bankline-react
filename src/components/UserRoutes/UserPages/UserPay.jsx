@@ -1,8 +1,8 @@
 import React from "react";
-import { UserClient } from "../../ListUsers/UserBox";
-import alert from "../../../static/alert.svg";
-import cardIcon from "../../../static/cardIcon.svg";
-import { ButtonPay } from "../../Buttons";
+import { UserClient } from "components/ListUsers/UserBox";
+import alert from "static/alert.svg";
+import cardIcon from "static/cardIcon.svg";
+import { ButtonPay } from "components/Buttons";
 import { Link } from "react-router-dom";
 import { PayClientContext } from "../UserContext";
 
@@ -33,7 +33,7 @@ export const CreditCards = ({ cards }) => {
       <div class="box__user--creditcards__alert">
         {cards.length === 0 ? (
           <>
-            <img src={alert} />
+            <img src={alert} alt="Alerta cartão de credito/debito não criado" />
             <p>
               Nenhum cartão de crédito cadastrado?{" "}
               <Link to="/create-card">Cadastrar agora!</Link>
@@ -54,7 +54,7 @@ export const CreditCards = ({ cards }) => {
 const SelectedCard = card => {
   return (
     <>
-      <img src={cardIcon} />
+      <img src={cardIcon} alt="cartão de crédito" />
       <p>
         Nenhum cartão selecionado para o pagamento! <br></br>
         <Link to="/select-card">Selecione seu cartão para continuar!</Link>

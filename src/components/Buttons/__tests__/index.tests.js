@@ -11,23 +11,22 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("It should mount buttons", () => {
-  it("It button Pay renders", () => {
+  it("It should render button pay to index", () => {
     const buttonPay = shallow(<ButtonPay link={"/"}>Pagar</ButtonPay>);
 
     expect(toJson(buttonPay)).toMatchSnapshot();
   });
-  it("It renders back button", () => {
-    const buttonPay = shallow(<BackButton>Voltar</BackButton>);
-    expect(toJson(buttonPay)).toMatchSnapshot();
-  });
-  it("It button Pay renders with width and margin", () => {
-    const clickPush = jest.fn();
+  it("It should render button pay width width and height", () => {
     const buttonPay = shallow(
-      <ButtonPay width={"100px"} margin={"50px"}>
+      <ButtonPay width={"200"} height={"200"}>
         Pagar
       </ButtonPay>
     );
-    buttonPay.find("button").simulate("click");
-    expect(clickPush).to.equal(1);
+
+    expect(toJson(buttonPay)).toMatchSnapshot();
+  });
+  it("It renders back button", () => {
+    const buttonPay = shallow(<BackButton />);
+    expect(toJson(buttonPay)).toMatchSnapshot();
   });
 });

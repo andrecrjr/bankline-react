@@ -18,5 +18,7 @@ export const ClientReducer = (initialState, action) => {
             : (card.statusSelected = false);
         })
       };
+    default:
+      return initialState;
   }
 };

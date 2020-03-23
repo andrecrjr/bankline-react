@@ -12,7 +12,7 @@ export default ({ user }) => {
 
   React.useEffect(() => {
     history.push("/pay");
-  }, []);
+  }, [history]);
   return (
     <React.Fragment>
       <PayClientContext.Provider value={{ userState, dispatch }}>

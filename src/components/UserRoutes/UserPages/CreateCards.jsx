@@ -1,8 +1,8 @@
 import React from "react";
-import arrowSelect from "../../../static/arrowSelect.svg";
-import { ButtonPay } from "../../Buttons";
+import arrowSelect from "static/arrowSelect.svg";
+import { ButtonPay } from "components/Buttons";
 import { PayClientContext } from "../UserContext";
-import { useSaveCard } from "../useSaveCard";
+import { useSaveCard, useFormInput } from "../utilHooks";
 
 export const UserCreateCard = () => {
   const { userState, dispatch } = React.useContext(PayClientContext);
@@ -30,7 +30,7 @@ export const UserCreateCard = () => {
 
   React.useEffect(() => {
     saveCardLocal();
-  }, [userState.cards]);
+  }, [saveCardLocal]);
 
   return (
     <form className="form__component" onSubmit={submitUserCard}>
@@ -42,7 +42,11 @@ export const UserCreateCard = () => {
           <option value="master-card">Master Card</option>
           <option value="visa">Visa</option>
         </select>
-        <img src={arrowSelect} className="group__arrow" />
+        <img
+          src={arrowSelect}
+          className="group__arrow"
+          alt="seta de selecionar cartão de crédito"
+        />
       </div>
       <div class="group">
         <input type="text" className="input__box" {...nameCard} required />
@@ -82,14 +86,4 @@ export const UserCreateCard = () => {
       <ButtonPay>Cadastrar cartão</ButtonPay>
     </form>
   );
-};
-
-const useFormInput = initialState => {
-  const [value, setInputValue] = React.useState(initialState);
-  const onChange = e => {
-    e.preventDefault();
-    setInputValue(e.target.value);
-  };
-
-  return { onChange, value };
 };

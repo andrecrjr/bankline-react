@@ -1,6 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`It should mount buttons It button Pay renders 1`] = `
+exports[`It should mount buttons It renders back button 1`] = `
+<span
+  className="page-user__back-button"
+  onClick={[Function]}
+>
+  <img
+    src="arrowBack.svg"
+  />
+</span>
+`;
+
+exports[`It should mount buttons It should render button pay to index 1`] = `
 <Component
   to="/"
 >
@@ -13,13 +24,13 @@ exports[`It should mount buttons It button Pay renders 1`] = `
 </Component>
 `;
 
-exports[`It should mount buttons It renders back button 1`] = `
-<span
-  className="page-user__back-button"
-  onClick={[Function]}
->
-  <img
-    src="arrowBack.svg"
-  />
-</span>
+exports[`It should mount buttons It should render button pay width width and height 1`] = `
+<Component>
+  <button
+    className="main--pay"
+    type="submit"
+  >
+    Pagar
+  </button>
+</Component>
 `;

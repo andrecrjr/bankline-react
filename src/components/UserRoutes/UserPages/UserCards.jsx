@@ -1,11 +1,11 @@
 import React from "react";
 import { PayClientContext } from "../UserContext";
-import cardIcon from "../../../static/cardIcon.svg";
-import okIcon from "../../../static/okIcon.svg";
-import crossCard from "../../../static/crossCard.svg";
-import { ButtonPay } from "../../Buttons";
+import cardIcon from "static/cardIcon.svg";
+import okIcon from "static/okIcon.svg";
+import crossCard from "static/crossCard.svg";
+import { ButtonPay } from "components/Buttons";
 
-import { useSaveCard } from "../useSaveCard";
+import { useSaveCard } from "../utilHooks";
 import { Link, useHistory } from "react-router-dom";
 
 const UserCards = () => {
@@ -30,7 +30,7 @@ const UserCards = () => {
 
   React.useEffect(() => {
     saveCardLocal();
-  }, [userState.cards]);
+  }, [saveCardLocal]);
 
   return (
     <section className="page-user__cards">
@@ -48,12 +48,13 @@ const UserCards = () => {
                       : `off`
                   }`}
                 >
-                  <img src={cardIcon} />
+                  <img src={cardIcon} alt="icone do cartão de crédito" />
                   <h3 className="page-user__cards--card-box--number">
                     {card.numberCc}
                   </h3>
                   <img
                     src={okIcon}
+                    alt="icone de cartão selecionado"
                     className={`page-user__cards--card-box--selected ${
                       (select.id === index && select.status) ||
                       card.statusSelected
@@ -66,7 +67,7 @@ const UserCards = () => {
             ))}
             <Link to="/create-card">
               <li className="page-user__cards--card-box add-more">
-                <img src={crossCard} />
+                <img src={crossCard} alt="adicionar cartão" />
                 <h3 className="add-new">Cadastrar novo cartão</h3>
               </li>
             </Link>
