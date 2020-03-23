@@ -40,7 +40,9 @@ export const CreditCards = ({ cards }) => {
             </p>
           </>
         ) : (
-          <SelectedCard cards={cards} />
+          <SelectedCard
+            card={cards.filter(card => card.statusSelected === true)}
+          />
         )}
       </div>
 
@@ -51,7 +53,23 @@ export const CreditCards = ({ cards }) => {
   );
 };
 
-const SelectedCard = card => {
+const SelectedCard = ({ card }) => {
+  console.log(card);
+  if (card.length === 1) {
+    return (
+      <>
+        <img src={cardIcon} alt="cartão de crédito" />
+        <Link to="/select-card">
+          <p className="box__user--number-form" style={{ color: "white" }}>
+            Forma de pagamento:
+          </p>
+          <p className="box__user--number-selected">
+            Cartão de crédito com final: {card[0].numberCc}
+          </p>
+        </Link>
+      </>
+    );
+  }
   return (
     <>
       <img src={cardIcon} alt="cartão de crédito" />

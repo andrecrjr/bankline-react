@@ -1,10 +1,10 @@
 import React from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
-import UserPay from "./UserPages/UserPay";
+import UserPay from "./UserPages/UserPay/";
 import { UserCreateCard } from "./UserPages/CreateCards";
 import UserCards from "./UserPages/UserCards";
 import { ClientReducer, initialState } from "./UserReducer";
-import { PayClientContext } from "./UserContext";
+import { PayClientContext } from "./UserPages/UserContext";
 
 export default ({ user }) => {
   const history = useHistory();
