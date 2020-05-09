@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { ActivityClientPages } from "../ListUsers/UserBox";
+import { ActivityClientPages } from "../../routes/ListUsers/UserBox";
 import arrowBack from "static/arrowBack.svg";
 
 export const ButtonPay = (props) => {

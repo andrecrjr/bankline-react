@@ -1,5 +1,5 @@
 import React from "react";
-import { UsersContainer } from "components/ListUsers";
+import { UsersContainer } from "./routes/ListUsers";
 import "styles/main.scss";
 import { BrowserRouter } from "react-router-dom";
 

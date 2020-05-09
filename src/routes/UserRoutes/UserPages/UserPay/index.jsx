@@ -1,5 +1,5 @@
-import React from "react";
-import { UserClient } from "components/ListUsers/UserBox";
+import React, { useState } from "react";
+import { UserClient } from "routes/ListUsers/UserBox";
 import alert from "static/alert.svg";
 import cardIcon from "static/cardIcon.svg";
 import { ButtonPay } from "components/Buttons";
@@ -19,9 +19,33 @@ export default function UserPay({ user }) {
 }
 
 export const InputPrice = () => {
+  const [price, setPrice] = useState(6.0);
+  const change = (money) => {
+    setPrice(money);
+  };
+  const currency = (moneyValue) => {
+    console.log(moneyValue);
+    if (moneyValue.length > 0) {
+      setPrice(
+        parseFloat(moneyValue.replace(/,/g, "."))
+          .toFixed(2)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      );
+    }
+  };
+
   return (
     <section className="box__user--input">
-      <input type="text" id="value-pay" placeholder="0,00" />
+      <input
+        type="number"
+        id="value-pay"
+        step="any"
+        placeholder="6.00"
+        onChange={(e) => change(e.target.value)}
+        value={price}
+        onBlur={(e) => currency(e.target.value)}
+      />
     </section>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { BackButton } from "../Buttons";
+import { BackButton } from "../../components/Buttons";
 import { ActivityClientPages } from "./UserBox";
 import UserRoutes from "../UserRoutes";
 
