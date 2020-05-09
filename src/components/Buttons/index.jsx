@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { ActivityClientPages } from "../ListUsers/UserBox";
 import arrowBack from "static/arrowBack.svg";
 
-export const ButtonPay = props => {
+export const ButtonPay = (props) => {
   const { location } = useHistory();
 
   if (location.pathname === "/pay") {
@@ -21,6 +21,7 @@ export const ButtonPay = props => {
       className="main--pay"
       type="submit"
       style={{ width: props.width, margin: props.margin }}
+      onClick={props.click ? props.click : null}
     >
       {props.children}
     </button>

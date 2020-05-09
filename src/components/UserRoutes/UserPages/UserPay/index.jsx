@@ -21,7 +21,6 @@ export default function UserPay({ user }) {
 export const InputPrice = () => {
   return (
     <section className="box__user--input">
-      <label for="value-pay">R$</label>
       <input type="text" id="value-pay" placeholder="0,00" />
     </section>
   );
@@ -30,7 +29,7 @@ export const InputPrice = () => {
 export const CreditCards = ({ cards }) => {
   return (
     <section className="box__user--creditcards">
-      <div class="box__user--creditcards__alert">
+      <div class={`user-choice ${cards.length > 0 ? `selected` : `alert`}`}>
         {cards.length === 0 ? (
           <>
             <img src={alert} alt="Alerta cartão de credito/debito não criado" />
@@ -41,7 +40,7 @@ export const CreditCards = ({ cards }) => {
           </>
         ) : (
           <SelectedCard
-            card={cards.filter(card => card.statusSelected === true)}
+            card={cards.filter((card) => card.statusSelected === true)}
           />
         )}
       </div>
@@ -54,7 +53,6 @@ export const CreditCards = ({ cards }) => {
 };
 
 const SelectedCard = ({ card }) => {
-  console.log(card);
   if (card.length === 1) {
     return (
       <>
@@ -64,7 +62,7 @@ const SelectedCard = ({ card }) => {
             Forma de pagamento:
           </p>
           <p className="box__user--number-selected">
-            Cartão de crédito com final: {card[0].numberCc}
+            Cartão de crédito com final: {card[0].numberCc.toString().slice(-4)}
           </p>
         </Link>
       </>

@@ -3,6 +3,7 @@ import arrowSelect from "static/arrowSelect.svg";
 import { ButtonPay } from "components/Buttons";
 import { PayClientContext } from "../UserContext";
 import { useSaveCard, useFormInput } from "../utilHooks";
+import Formset from "components/Formset";
 
 export const UserCreateCard = () => {
   const { userState, dispatch } = React.useContext(PayClientContext);
@@ -14,7 +15,7 @@ export const UserCreateCard = () => {
   const cvvCard = useFormInput("");
   const cepUser = useFormInput("");
 
-  const submitUserCard = e => {
+  const submitUserCard = (e) => {
     e.preventDefault();
     const creditCard = {
       flagBank: selectBank.value,
@@ -23,7 +24,7 @@ export const UserCreateCard = () => {
       validCc: validCard.value,
       cvvCc: cvvCard.value,
       cepUser: cepUser.value,
-      statusSelected: false
+      statusSelected: false,
     };
     dispatch({ type: "ADD_CREDIT_CARD", payload: creditCard });
   };
@@ -33,7 +34,7 @@ export const UserCreateCard = () => {
   }, [saveCardLocal]);
 
   return (
-    <form className="form__component" onSubmit={submitUserCard}>
+    <form className="form__component">
       <div class="group">
         <select className="card__flag" {...selectBank}>
           <option disabled selected>
@@ -48,42 +49,16 @@ export const UserCreateCard = () => {
           alt="seta de selecionar cartão de crédito"
         />
       </div>
-      <div class="group">
-        <input type="text" className="input__box" {...nameCard} required />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Nome escrito no cartão</label>
-      </div>
 
-      <div class="group">
-        <input type="text" className="input__box" {...numberCard} required />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Numero do cartão</label>
-      </div>
+      <Formset itemData={{ ...numberCard }} labelForm={`Numero do cartão`} />
+      <Formset itemData={{ ...validCard }} labelForm={`Validade (MM/AAAA)`} />
+      <Formset itemData={{ ...cvvCard }} labelForm={`Codigo de segurança`} />
+      <Formset
+        itemData={{ ...cepUser }}
+        labelForm={`CEP do endereço da fatura`}
+      />
 
-      <div class="group">
-        <input type="text" className="input__box" {...validCard} required />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Validade (MM/AAAA)</label>
-      </div>
-
-      <div class="group">
-        <input type="text" className="input__box" {...cvvCard} required />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Codigo de segurança</label>
-      </div>
-
-      <div class="group">
-        <input type="text" className="input__box" {...cepUser} required />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>CEP do endereço da fatura</label>
-      </div>
-
-      <ButtonPay>Cadastrar cartão</ButtonPay>
+      <ButtonPay click={submitUserCard}>Cadastrar cartão</ButtonPay>
     </form>
   );
 };
