@@ -86,8 +86,9 @@
   }
   &--creditcards {
     display: flex;
-    margin-top: 60%;
+    margin-top: auto;
     width: 85%;
+    padding-bottom: 25px;
     align-self: center;
     border-top: 2px #d8d8d8 solid;
     justify-content: center;
@@ -114,13 +115,19 @@
           color: #ef5778;
           font-weight: bold;
         }
-        p {
-          padding-left: 12px;
-        }
+
         img {
           width: 20px;
         }
       }
+    }
+    a {
+      &:visited {
+        color: white;
+      }
+    }
+    p {
+      padding-left: 12px;
     }
   }
 }

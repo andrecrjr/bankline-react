@@ -3,12 +3,13 @@
   flex-direction: column;
   align-self: center;
   margin-top: 45px;
+  flex-grow: 1;
 }
 
 /* form starting stylings ------------------------------- */
 .group {
   position: relative;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
   &__arrow {
     position: absolute;
     top: 10px;

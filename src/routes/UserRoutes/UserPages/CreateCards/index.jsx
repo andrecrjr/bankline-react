@@ -5,7 +5,7 @@ import { PayClientContext } from "../UserContext";
 import { useSaveCard, useFormInput } from "../utilHooks";
 import Formset from "components/Formset";
 
-export const UserCreateCard = () => {
+export const UserCreateCard = (props) => {
   const { userState, dispatch } = React.useContext(PayClientContext);
   const saveCardLocal = useSaveCard(userState.cards);
   const nameCard = useFormInput("");
@@ -37,24 +37,36 @@ export const UserCreateCard = () => {
     <form className="form__component">
       <div class="group">
         <select className="card__flag" {...selectBank}>
-          <option disabled selected>
-            Selecione a bandeira do cartão
-          </option>
+          <option defaultValue>Selecione a bandeira do cartão</option>
           <option value="master-card">Master Card</option>
           <option value="visa">Visa</option>
         </select>
         <img
           src={arrowSelect}
           className="group__arrow"
-          alt="seta de selecionar cartão de crédito"
+          alt="seta de selecionar cartão"
         />
       </div>
 
-      <Formset itemData={{ ...numberCard }} labelForm={`Numero do cartão`} />
+      <Formset
+        itemData={{ ...numberCard }}
+        type={`number`}
+        labelForm={`Numero do cartão`}
+      />
+      <Formset
+        itemData={{ ...nameCard }}
+        labelForm={`Seu nome escrito no cartão`}
+      />
       <Formset itemData={{ ...validCard }} labelForm={`Validade (MM/AAAA)`} />
-      <Formset itemData={{ ...cvvCard }} labelForm={`Codigo de segurança`} />
+
+      <Formset
+        itemData={{ ...cvvCard }}
+        type={`number`}
+        labelForm={`Codigo de segurança`}
+      />
       <Formset
         itemData={{ ...cepUser }}
+        type={`number`}
         labelForm={`CEP do endereço da fatura`}
       />
 
