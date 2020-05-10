@@ -4,6 +4,7 @@ import { ButtonPay } from "components/Buttons";
 import { PayClientContext } from "../UserContext";
 import { useSaveCard, useFormInput } from "../utilHooks";
 import Formset from "components/Formset";
+import { ValidateInfoCard } from "./validator";
 
 export const UserCreateCard = (props) => {
   const { userState, dispatch } = React.useContext(PayClientContext);
@@ -17,7 +18,7 @@ export const UserCreateCard = (props) => {
 
   const submitUserCard = (e) => {
     e.preventDefault();
-    const creditCard = {
+    const createdCard = {
       flagBank: selectBank.value,
       nameCc: nameCard.value,
       numberCc: numberCard.value,
@@ -26,7 +27,10 @@ export const UserCreateCard = (props) => {
       cepUser: cepUser.value,
       statusSelected: false,
     };
-    dispatch({ type: "ADD_CREDIT_CARD", payload: creditCard });
+
+    if ([ValidateInfoCard(createdCard)].some((item) => item === false)) {
+      dispatch({ type: "ADD_CREDIT_CARD", payload: createdCard });
+    }
   };
 
   React.useEffect(() => {
@@ -52,22 +56,30 @@ export const UserCreateCard = (props) => {
         itemData={{ ...numberCard }}
         type={`number`}
         labelForm={`Numero do cartão`}
+        requiredInput={true}
       />
       <Formset
         itemData={{ ...nameCard }}
         labelForm={`Seu nome escrito no cartão`}
+        requiredInput={true}
       />
-      <Formset itemData={{ ...validCard }} labelForm={`Validade (MM/AAAA)`} />
+      <Formset
+        itemData={{ ...validCard }}
+        labelForm={`Validade (MM/AAAA)`}
+        requiredInput={true}
+      />
 
       <Formset
         itemData={{ ...cvvCard }}
         type={`number`}
         labelForm={`Codigo de segurança`}
+        requiredInput={true}
       />
       <Formset
         itemData={{ ...cepUser }}
         type={`number`}
         labelForm={`CEP do endereço da fatura`}
+        requiredInput={true}
       />
 
       <ButtonPay click={submitUserCard}>Cadastrar cartão</ButtonPay>

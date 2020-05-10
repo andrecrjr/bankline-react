@@ -36,6 +36,7 @@ export const InputPrice = () => {
         type="number"
         id="value-pay"
         placeholder="6.00"
+        step=".01"
         onChange={(e) => change(e.target.value)}
         value={price}
         onBlur={(e) => currency(e.target.value)}
