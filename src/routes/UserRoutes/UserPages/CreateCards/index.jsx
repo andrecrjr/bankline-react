@@ -2,45 +2,46 @@ import React from "react";
 import arrowSelect from "static/arrowSelect.svg";
 import { ButtonPay } from "components/Buttons";
 import { PayClientContext } from "../UserContext";
-import { useSaveCard, useFormInput } from "../utilHooks";
+import { useSaveCard } from "../utilHooks";
 import Formset from "components/Formset";
-import { ValidateInfoCard } from "./validator";
+import { validateInfoCard, validateCep } from "./validator";
+import { useForm } from "react-hook-form";
 
 export const UserCreateCard = (props) => {
   const { userState, dispatch } = React.useContext(PayClientContext);
+  const { handleSubmit, register, errors } = useForm();
+
   const saveCardLocal = useSaveCard(userState.cards);
-  const nameCard = useFormInput("");
-  const selectBank = useFormInput("");
-  const numberCard = useFormInput("");
-  const validCard = useFormInput("");
-  const cvvCard = useFormInput("");
-  const cepUser = useFormInput("");
+  const selectBank = useForm();
 
-  const submitUserCard = (e) => {
-    e.preventDefault();
-    const createdCard = {
-      flagBank: selectBank.value,
-      nameCc: nameCard.value,
-      numberCc: numberCard.value,
-      validCc: validCard.value,
-      cvvCc: cvvCard.value,
-      cepUser: cepUser.value,
-      statusSelected: false,
-    };
-
-    if ([ValidateInfoCard(createdCard)].some((item) => item === false)) {
+  const submitUserCard = (data) => {
+    console.log(data);
+    // const createdCard = {
+    //   flagBank: data.selectBank,
+    //   nameCc: data.nameCard,
+    //   numberCc: data.numberCard,
+    //   validCc: data.validCard,
+    //   cvvCc: data.cvvCard,
+    //   cepUser: data.cepUser,
+    //   statusSelected: false,
+    // };
+    /*
+    if (allTrue(ValidateInfoCard(createdCard)) {
       dispatch({ type: "ADD_CREDIT_CARD", payload: createdCard });
-    }
+    } else {
+      errorCcFactory(ValidateInfoCard(createdCard));
+    }*/
   };
 
   React.useEffect(() => {
+    console.log(errors);
     saveCardLocal();
-  }, [saveCardLocal]);
+  }, [saveCardLocal, errors]);
 
   return (
-    <form className="form__component">
+    <form className="form__component" onSubmit={handleSubmit(submitUserCard)}>
       <div class="group">
-        <select className="card__flag" {...selectBank}>
+        <select className="card__flag" name="selectBank" ref={register}>
           <option defaultValue>Selecione a bandeira do cartão</option>
           <option value="master-card">Master Card</option>
           <option value="visa">Visa</option>
@@ -53,36 +54,63 @@ export const UserCreateCard = (props) => {
       </div>
 
       <Formset
-        itemData={{ ...numberCard }}
         type={`number`}
+        nameInput={`numberCard`}
         labelForm={`Numero do cartão`}
         requiredInput={true}
+        reference={register({
+          validate: (value) =>
+            validateInfoCard(value) === true ||
+            "O número desse cartão não existe",
+        })}
+        errors={errors}
       />
       <Formset
-        itemData={{ ...nameCard }}
+        nameInput={`nameCard`}
         labelForm={`Seu nome escrito no cartão`}
         requiredInput={true}
+        reference={register({
+          validate: (value) => validateCep(value) === true || "CEP inválido",
+        })}
+        errors={errors}
       />
       <Formset
-        itemData={{ ...validCard }}
+        nameInput={`validCard`}
         labelForm={`Validade (MM/AAAA)`}
         requiredInput={true}
+        errors={errors}
+        reference={register({
+          pattern: {
+            value: /\d{2}\/\d{4}/,
+            message:
+              "A data de validade do cartão está com formato errado (MM/AAAA)",
+          },
+        })}
       />
 
       <Formset
-        itemData={{ ...cvvCard }}
         type={`number`}
+        nameInput={`cvvCard`}
         labelForm={`Codigo de segurança`}
         requiredInput={true}
+        errors={errors}
+        reference={register({
+          pattern: {
+            value: /\d{3}/,
+            message: "O CVV tem três digitos.",
+          },
+        })}
       />
       <Formset
-        itemData={{ ...cepUser }}
         type={`number`}
+        nameInput={`cepUser`}
         labelForm={`CEP do endereço da fatura`}
         requiredInput={true}
+        reference={register}
+        errors={errors}
       />
 
-      <ButtonPay click={submitUserCard}>Cadastrar cartão</ButtonPay>
+      <ButtonPay>Cadastrar cartão</ButtonPay>
     </form>
   );
 };
