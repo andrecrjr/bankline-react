@@ -22,7 +22,7 @@ const UserCards = () => {
     setSelected({ status: true, id: index });
   };
 
-  const dispatchCard = e => {
+  const dispatchCard = (e) => {
     e.preventDefault();
     dispatch({ type: "ACTIVATE_CARD", id: select.id });
     history.push("/pay");
@@ -39,7 +39,7 @@ const UserCards = () => {
         <form onSubmit={dispatchCard}>
           <ul className="page-user__cards--list">
             {userState.cards.map((card, index) => (
-              <li onClick={e => selectCard(e, index, card.userSelected)}>
+              <li onClick={(e) => selectCard(e, index, card.userSelected)}>
                 <div
                   className={`page-user__cards--card-box ${
                     (select.id === index && select.status) ||
@@ -50,7 +50,7 @@ const UserCards = () => {
                 >
                   <img src={cardIcon} alt="icone do cartão de crédito" />
                   <h3 className="page-user__cards--card-box--number">
-                    {card.numberCc}
+                    {card.numberCard}
                   </h3>
                   <img
                     src={okIcon}

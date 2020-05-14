@@ -16,18 +16,27 @@
     right: 7px;
   }
 }
-
-.input__box {
-  font-size: 18px;
-  padding: 10px 10px 10px 5px;
-  display: block;
-  width: 335px;
-  border: none;
-  background: transparent;
-  border-bottom: 1px solid #dae1f0;
-}
-.input__box:focus {
-  outline: none;
+.input {
+  &__box {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 335px;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #dae1f0;
+    &:focus {
+      outline: none;
+    }
+  }
+  &__error {
+    opacity: 0;
+    transition: all 500ms;
+    &.active {
+      opacity: 1;
+      color: red;
+    }
+  }
 }
 
 /* LABEL ======================================= */

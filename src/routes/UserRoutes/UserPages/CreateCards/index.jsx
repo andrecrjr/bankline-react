@@ -16,21 +16,15 @@ export const UserCreateCard = (props) => {
 
   const submitUserCard = (data) => {
     console.log(data);
-    // const createdCard = {
-    //   flagBank: data.selectBank,
-    //   nameCc: data.nameCard,
-    //   numberCc: data.numberCard,
-    //   validCc: data.validCard,
-    //   cvvCc: data.cvvCard,
-    //   cepUser: data.cepUser,
-    //   statusSelected: false,
-    // };
-    /*
-    if (allTrue(ValidateInfoCard(createdCard)) {
+    const createdCard = {
+      ...data,
+      statusSelected: false,
+    };
+
+    if (Object.keys(errors).length === 0) {
       dispatch({ type: "ADD_CREDIT_CARD", payload: createdCard });
-    } else {
-      errorCcFactory(ValidateInfoCard(createdCard));
-    }*/
+      alert("Cartão cadastrado com sucesso!");
+    }
   };
 
   React.useEffect(() => {
@@ -69,9 +63,7 @@ export const UserCreateCard = (props) => {
         nameInput={`nameCard`}
         labelForm={`Seu nome escrito no cartão`}
         requiredInput={true}
-        reference={register({
-          validate: (value) => validateCep(value) === true || "CEP inválido",
-        })}
+        reference={register}
         errors={errors}
       />
       <Formset
@@ -106,7 +98,10 @@ export const UserCreateCard = (props) => {
         nameInput={`cepUser`}
         labelForm={`CEP do endereço da fatura`}
         requiredInput={true}
-        reference={register}
+        reference={register({
+          validate: (value) =>
+            validateCep(value) === true || "O número desse CEP não existe",
+        })}
         errors={errors}
       />
 

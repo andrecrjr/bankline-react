@@ -94,7 +94,8 @@
     justify-content: center;
     flex-direction: column;
     .user-choice {
-      &.selected {
+      &.selected,
+      &.alert {
         display: flex;
         padding: 0 20px;
         padding-top: 20px;
@@ -104,18 +105,10 @@
         padding-bottom: 30px;
       }
       &.alert {
-        display: flex;
-        padding: 0 20px;
-        padding-top: 20px;
-        font-size: 14px;
-        color: #ef5778;
-        align-self: center;
-        padding-bottom: 30px;
         a {
           color: #ef5778;
           font-weight: bold;
         }
-
         img {
           width: 20px;
         }

@@ -81,7 +81,8 @@ const SelectedCard = ({ card }) => {
             Forma de pagamento:
           </p>
           <p className="box__user--number-selected">
-            Cartão de crédito com final: {card[0].numberCc.toString().slice(-4)}
+            Cartão de crédito com final:{" "}
+            {card[0].numberCard.toString().slice(-4)}
           </p>
         </Link>
       </>

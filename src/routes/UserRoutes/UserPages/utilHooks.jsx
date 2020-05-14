@@ -9,13 +9,3 @@ export const useSaveCard = (initialState = {}) => {
   }, [initialState]);
   return callback;
 };
-
-export const useFormInput = initialState => {
-  const [value, setInputValue] = React.useState(initialState);
-  const onChange = e => {
-    e.preventDefault();
-    setInputValue(e.target.value);
-  };
-
-  return { onChange, value };
-};

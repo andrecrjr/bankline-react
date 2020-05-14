@@ -10,7 +10,9 @@ export default function Formset({
 }) {
   return (
     <div class="group">
-      <span>{errors[nameInput] ? errors[nameInput].message : null}</span>
+      <span class={`input__error ${errors[nameInput] ? `active` : null}`}>
+        {errors[nameInput] ? errors[nameInput].message : null}
+      </span>
       <input
         type={type}
         className="input__box"
