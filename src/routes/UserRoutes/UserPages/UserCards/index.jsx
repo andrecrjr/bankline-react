@@ -39,31 +39,11 @@ const UserCards = () => {
         <form onSubmit={dispatchCard}>
           <ul className="page-user__cards--list">
             {userState.cards.map((card, index) => (
-              <li
-                className={`page-user__cards--card-box ${
-                  (select.id === index && select.status) || card.statusSelected
-                    ? `on`
-                    : `off`
-                }`}
-                onClick={(e) => selectCard(e, index, card.userSelected)}
-              >
-                <div className="page-user__cards--card-box--selection">
-                  <img src={cardIcon} alt="icone do cartão de crédito" />
-                  <h3 className="page-user__cards--card-box--number">
-                    {card.numberCard}
-                  </h3>
-                  <img
-                    src={okIcon}
-                    alt="icone de cartão selecionado"
-                    className={`page-user__cards--card-box--selected ${
-                      (select.id === index && select.status) ||
-                      card.statusSelected
-                        ? `on`
-                        : `off`
-                    }`}
-                  />
-                </div>
-              </li>
+              <CardBoxSelection
+                key={index}
+                boxData={{ card, index }}
+                boxState={{ select, selectCard }}
+              />
             ))}
             <Link to="/create-card">
               <li className="page-user__cards--card-box add-more">
@@ -82,3 +62,34 @@ const UserCards = () => {
 };
 
 export default UserCards;
+
+export const CardBoxSelection = ({ boxState, boxData }) => {
+  const { card, index } = boxData;
+  const { select, selectCard } = boxState;
+  return (
+    <li
+      className={`page-user__cards--card-box ${
+        (select.id === index && select.status) || card.statusSelected
+          ? `on`
+          : `off`
+      }`}
+      onClick={(e) => selectCard(e, index, card.userSelected)}
+    >
+      <div className="page-user__cards--card-box--selection">
+        <img src={cardIcon} alt="icone do cartão de crédito" />
+        <h3 className="page-user__cards--card-box--number">
+          {card.numberCard}
+        </h3>
+        <img
+          src={okIcon}
+          alt="icone de cartão selecionado"
+          className={`page-user__cards--card-box--selected ${
+            (select.id === index && select.status) || card.statusSelected
+              ? `on`
+              : `off`
+          }`}
+        />
+      </div>
+    </li>
+  );
+};
