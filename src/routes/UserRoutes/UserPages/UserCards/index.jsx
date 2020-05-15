@@ -39,15 +39,15 @@ const UserCards = () => {
         <form onSubmit={dispatchCard}>
           <ul className="page-user__cards--list">
             {userState.cards.map((card, index) => (
-              <li onClick={(e) => selectCard(e, index, card.userSelected)}>
-                <div
-                  className={`page-user__cards--card-box ${
-                    (select.id === index && select.status) ||
-                    card.statusSelected
-                      ? `on`
-                      : `off`
-                  }`}
-                >
+              <li
+                className={`page-user__cards--card-box ${
+                  (select.id === index && select.status) || card.statusSelected
+                    ? `on`
+                    : `off`
+                }`}
+                onClick={(e) => selectCard(e, index, card.userSelected)}
+              >
+                <div className="page-user__cards--card-box--selection">
                   <img src={cardIcon} alt="icone do cartão de crédito" />
                   <h3 className="page-user__cards--card-box--number">
                     {card.numberCard}
@@ -68,7 +68,7 @@ const UserCards = () => {
             <Link to="/create-card">
               <li className="page-user__cards--card-box add-more">
                 <img src={crossCard} alt="adicionar cartão" />
-                <h3 className="add-new">Cadastrar novo cartão</h3>
+                <span className="add-new">Cadastrar novo cartão</span>
               </li>
             </Link>
           </ul>

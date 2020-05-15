@@ -28,8 +28,14 @@
       width: 100%;
       display: flex;
       transition: background 200ms;
-      justify-content: space-between;
-      padding: 28px 33px;
+      justify-content: center;
+      &:first-child {
+        margin-top: 25px;
+      }
+      &--selection {
+        display: flex;
+        padding: 25px 0;
+      }
       &.on {
         background: rgba(255, 255, 255, 0.1);
       }
@@ -41,19 +47,18 @@
         line-height: 23px;
         padding: 0;
         color: white;
+        margin-top: 15px;
         padding-top: 25px;
         justify-content: initial;
         .add-new {
           padding-left: 22px;
         }
       }
-      &:first-child {
-        margin-top: 25px;
-      }
+
       &--number {
-        padding: 2px 50px 0 2px;
+        padding: 2px 35px 0 2px;
         padding-left: 20px;
-        font-size: 20px;
+        font-size: 18px;
         line-height: 23px;
         color: white;
         letter-spacing: 1px;

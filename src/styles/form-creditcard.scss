@@ -21,7 +21,7 @@
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: block;
-    width: 335px;
+    width: $input-width-value-mobile;
     border: none;
     background: transparent;
     border-bottom: 1px solid #dae1f0;
@@ -30,11 +30,16 @@
     }
   }
   &__error {
+    display: block;
+    width: $input-width-value-mobile;
     opacity: 0;
     transition: all 500ms;
+    font-size: 14px;
+    padding-left: 0;
     &.active {
       opacity: 1;
       color: red;
+      padding-left: 2px;
     }
   }
 }

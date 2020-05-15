@@ -12,7 +12,6 @@ export const UserCreateCard = (props) => {
   const { handleSubmit, register, errors } = useForm();
 
   const saveCardLocal = useSaveCard(userState.cards);
-  const selectBank = useForm();
 
   const submitUserCard = (data) => {
     console.log(data);
