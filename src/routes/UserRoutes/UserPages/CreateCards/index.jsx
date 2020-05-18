@@ -88,7 +88,7 @@ export const UserCreateCard = (props) => {
         reference={register({
           pattern: {
             value: /\d{3}/,
-            message: "O CVV tem três digitos.",
+            message: "O CVV deve ter três digitos.",
           },
         })}
       />

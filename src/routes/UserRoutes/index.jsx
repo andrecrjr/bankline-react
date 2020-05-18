@@ -5,6 +5,7 @@ import { UserCreateCard } from "./UserPages/CreateCards";
 import UserCards from "./UserPages/UserCards";
 import { ClientReducer, initialState } from "./UserReducer";
 import { PayClientContext } from "./UserPages/UserContext";
+import TransactionClient from "./UserPages/TransactionClient";
 
 export default ({ user }) => {
   const history = useHistory();
@@ -20,17 +21,22 @@ export default ({ user }) => {
           <Route
             path="/pay"
             exact={true}
-            render={props => <UserPay {...props} user={user} />}
+            render={(props) => <UserPay {...props} user={user} />}
           />
           <Route
             path="/create-card"
             exact={true}
-            render={props => <UserCreateCard {...props} user={user} />}
+            render={(props) => <UserCreateCard {...props} user={user} />}
           />
           <Route
             path="/select-card"
             exact={true}
-            render={props => <UserCards {...props} user={user} />}
+            render={(props) => <UserCards {...props} user={user} />}
+          />
+          <Route
+            path="/transaction"
+            exact={true}
+            render={(props) => <TransactionClient {...props} user={user} />}
           />
         </Switch>
       </PayClientContext.Provider>

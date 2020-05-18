@@ -23,7 +23,7 @@ export const SelectedCard = ({ cards }) => {
         )}
       </div>
 
-      <ButtonPay link={cards.length >= 1 ? `/create-card` : `/create-card`}>
+      <ButtonPay link={cards.length >= 1 ? `/transaction` : `/create-card`}>
         Pagar
       </ButtonPay>
     </section>
