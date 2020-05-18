@@ -4,18 +4,6 @@ import { ActivityClientPages } from "../../routes/ListUsers/UserBox";
 import arrowBack from "static/arrowBack.svg";
 
 export const ButtonPay = (props) => {
-  const { location } = useHistory();
-
-  if (location.pathname === "/pay") {
-    return (
-      <Link to={props.link}>
-        <button className="main--pay" type="submit">
-          {props.children}
-        </button>
-      </Link>
-    );
-  }
-
   return (
     <button
       className="main--pay"

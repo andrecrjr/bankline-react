@@ -1,10 +1,10 @@
 import React from "react";
 
 export const InputPrice = ({ priceData }) => {
-  const { price, setPrice, onChangePrice } = priceData;
+  const { money, setMoney, onChangePrice } = priceData;
   const currency = (moneyValue) => {
     if (moneyValue.length > 0) {
-      setPrice(parseFloat(moneyValue).toFixed(2).toString());
+      setMoney(parseFloat(moneyValue).toFixed(2).toString());
     }
   };
 
@@ -16,7 +16,7 @@ export const InputPrice = ({ priceData }) => {
         placeholder="6.00"
         step=".01"
         onChange={(e) => onChangePrice(e.target.value)}
-        value={price}
+        value={money}
         onBlur={(e) => currency(e.target.value)}
       />
     </section>

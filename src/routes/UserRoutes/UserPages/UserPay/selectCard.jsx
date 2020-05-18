@@ -3,8 +3,15 @@ import cardIcon from "static/cardIcon.svg";
 import { Link } from "react-router-dom";
 import alert from "static/alert.svg";
 import { ButtonPay } from "components/Buttons";
+import { useHistory } from "react-router-dom";
 
 export const SelectedCard = ({ cards }) => {
+  const history = useHistory();
+  const pushMe = (e) => {
+    e.preventDefault();
+    history.push(`/create-card`);
+  };
+
   return (
     <section className="box__user--creditcards">
       <div class={`user-choice ${cards.length > 0 ? `selected` : `alert`}`}>
@@ -23,9 +30,7 @@ export const SelectedCard = ({ cards }) => {
         )}
       </div>
 
-      <ButtonPay link={cards.length >= 1 ? `/transaction` : `/create-card`}>
-        Pagar
-      </ButtonPay>
+      <ButtonPay click={cards.length === 0 && pushMe}>Pagar</ButtonPay>
     </section>
   );
 };
