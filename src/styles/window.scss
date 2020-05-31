@@ -12,33 +12,10 @@
     width: 100%;
     height: 100vh;
     background: linear-gradient(239.44deg, #3c3e64 0.83%, #1d1e2a 100%);
-
     overflow-x: hidden;
     transition: all 500ms;
   }
   &.close {
     display: none;
-  }
-}
-
-.page-user {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: stretch;
-  flex-direction: column;
-  &__information {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-  }
-  &--top {
-    display: none;
-  }
-  &__back-button {
-    width: -moz-fit-content;
-    width: -webkit-fit-content;
-    width: fit-content;
-    margin: 24px 0 0 16px;
   }
 }

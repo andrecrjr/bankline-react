@@ -3,32 +3,37 @@ import { UserClient } from "routes/ListUsers/UserBox";
 import { PayClientContext } from "../UserContext";
 import { SelectedCard } from "./selectCard";
 import { InputPrice } from "./Input";
+import { useHistory } from "react-router-dom";
 
 export default function UserPay({ user }, props) {
   const { userState, dispatchTransact } = React.useContext(PayClientContext);
+  const history = useHistory();
   const [money, setMoney] = useState("6.00");
   const onChangePrice = (money) => {
     setMoney(money);
   };
-  console.log(props);
 
   const newTransaction = (e) => {
     e.preventDefault();
-    console.log(userState.cards.filter((card) => card.statusSelected === true));
     console.log({
-      cardUsed: userState.cards.filter((card) => card.statusSelected === true),
+      cardUsed: userState.cards.filter(
+        (card) => card.statusSelected === true
+      )[0],
       userPaid: user,
       valuePaid: money,
     });
-    if (money > 0) {
-      /*
+    if (money > 0 && userState.cards.length > 0) {
       dispatchTransact({
         type: "PAY_TRANSACTION",
         payload: {
-          card: userState.cards.filter((card) => card.statusSelected === true),
-          user,
+          card: userState.cards.filter(
+            (card) => card.statusSelected === true
+          )[0],
+          valuePaid: money,
+          datetime: new Date(),
         },
-      });*/
+      });
+      history.push("/transaction");
     }
   };
 
